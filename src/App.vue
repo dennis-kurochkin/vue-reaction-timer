@@ -1,10 +1,18 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
+  <Block />
+  <Results />
 </template>
 
 <script>
+import Block from './components/Block';
+import Results from './components/Results';
+
 export default {
   name: 'App',
+  components: {
+    Block,
+    Results,
+  },
 }
 </script>
 
@@ -14,7 +22,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #444444;
   margin-top: 60px;
 }
 </style>
