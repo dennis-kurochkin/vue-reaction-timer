@@ -1,6 +1,19 @@
 <template>
-  <Block />
-  <Results />
+  <h1>Reaction Timer Game</h1>
+
+  <button type="button"
+          @click="start"
+          :disabled="isPlaying"
+  >
+    Play!
+  </button>
+
+  <Block v-if="isPlaying"
+         :delay="delay"
+         @click="boxClickHandler"
+  />
+
+  <Results v-if="isFinished" />
 </template>
 
 <script>
@@ -12,6 +25,24 @@ export default {
   components: {
     Block,
     Results,
+  },
+  data() {
+    return {
+      isPlaying: false,
+      isFinished: false,
+      delay: null,
+    }
+  },
+  methods: {
+    start() {
+      this.delay = 2000 + Math.floor(Math.random() * 5000);
+      this.isPlaying = true;
+      this.isFinished = false;
+    },
+    boxClickHandler() {
+      this.isPlaying = false;
+      this.isFinished = true;
+    },
   },
 }
 </script>
