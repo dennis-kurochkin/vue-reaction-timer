@@ -35,7 +35,7 @@ export default {
   },
   methods: {
     start() {
-      this.delay = 2000 + Math.floor(Math.random() * 5000);
+      this.delay = 1000 + Math.floor(Math.random() * 2000);
       this.isPlaying = true;
       this.isFinished = false;
     },
