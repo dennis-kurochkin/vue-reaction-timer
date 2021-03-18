@@ -9,9 +9,9 @@
 
 <script>
 export default  {
-  props: [
-      'delay',
-  ],
+  props: {
+    delay: Number,
+  },
   data() {
     return {
       showBlock: false,
@@ -33,6 +33,7 @@ export default  {
     },
     stopTimer() {
       clearInterval(this.timer);
+      this.$emit('end', this.reactionTime);
     },
   }
 }

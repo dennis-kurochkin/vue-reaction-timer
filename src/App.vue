@@ -1,50 +1,51 @@
 <template>
-  <h1>Reaction Timer Game</h1>
-
-  <button type="button"
-          @click="start"
-          :disabled="isPlaying"
-  >
-    Play!
-  </button>
-
-  <Block v-if="isPlaying"
-         :delay="delay"
-         @click="boxClickHandler"
-  />
-
-  <Results v-if="isFinished" />
+    <h1>Reaction Timer Game</h1>
+    <button type="button"
+            :disabled="isPlaying"
+            @click="start"
+    >
+        Play!
+    </button>
+    <Block v-if="isPlaying"
+          :delay="delay"
+          @end="boxEndHandler"
+    />
+    <Results v-if="isFinished"
+             :result="score"
+    />
 </template>
 
 <script>
-import Block from './components/Block';
-import Results from './components/Results';
+import Block from '@/components/Block';
+import Results from '@/components/Results';
 
 export default {
-  name: 'App',
-  components: {
-    Block,
-    Results,
-  },
-  data() {
-    return {
-      isPlaying: false,
-      isFinished: false,
-      delay: null,
-    }
-  },
-  methods: {
-    start() {
-      this.delay = 1000 + Math.floor(Math.random() * 2000);
-      this.isPlaying = true;
-      this.isFinished = false;
+    name: 'App',
+    components: {
+        Block,
+        Results,
     },
-    boxClickHandler() {
-      this.isPlaying = false;
-      this.isFinished = true;
+    data() {
+        return {
+            delay: null,
+            score: null,
+            isPlaying: false,
+            isFinished: false,
+        };
     },
-  },
-}
+    methods: {
+        start() {
+            this.delay = 1000 + Math.floor(Math.random() * 2000);
+            this.isPlaying = true;
+            this.isFinished = false;
+        },
+        boxEndHandler(reactionTime) {
+            this.score = reactionTime;
+            this.isPlaying = false;
+            this.isFinished = true;
+        }
+    },
+};
 </script>
 
 <style>

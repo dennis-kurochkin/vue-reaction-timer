@@ -1,15 +1,13 @@
 <template>
   <p class="result">
-    Your result: {{ result }}
+    Your result: {{ result }} ms
   </p>
 </template>
 
 <script>
 export default  {
-  data() {
-    return {
-      result: 'result',
-    }
-  },
+  props: {
+    result: Number,
+  }
 }
 </script>
