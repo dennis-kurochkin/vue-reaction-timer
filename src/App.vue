@@ -11,7 +11,7 @@
           @end="boxEndHandler"
     />
     <Results v-if="isFinished"
-             :result="score"
+             :score="score"
     />
 </template>
 
